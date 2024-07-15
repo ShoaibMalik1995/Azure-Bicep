@@ -18,4 +18,5 @@
 
 Here is the URL for the Bicep playground, where you can play with Bicep and see the corresponding ARM template code.
 **[Bicep PlayGround](https://azure.github.io/bicep/)**
+![image](https://github.com/user-attachments/assets/c4c07482-893f-414b-978c-8ecf8f373526)
 
