@@ -1,0 +1,40 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "skuName": {
+            "value": "S1"
+        },
+        "capacity": {
+            "value": 1
+        },
+        "appServicePlanName": {
+            "value": "msk-appserviceplan-uks-tst"
+        },
+        "webAppName": {
+            "value": "msk-webapp-uks-tst"
+        },
+        "appInsightsName": {
+            "value": "msk-appinsights-uks-tst"
+        },
+        "tags": {
+            "value": {
+              "environmentid": "tst",
+              "environmentType": "msk-tst",
+              "costCenter": "AIS"
+            }
+        },
+        "maxSizeBytes": {
+            "value": "0"
+        },
+        "collation": {
+            "value": "SQL_Latin1_General_CP1_CI_AS"
+        },
+        "sqlServerName": {
+            "value": "msk-sqlserver-uks-tst"
+        },
+        "sqlDatabaseName": {
+            "value": "msk-sqldatabase-uks-tst"
+        }
+    }
+}
