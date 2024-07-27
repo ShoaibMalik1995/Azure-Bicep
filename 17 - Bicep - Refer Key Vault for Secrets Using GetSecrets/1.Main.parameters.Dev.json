@@ -1,0 +1,28 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "tags": {
+            "value": {
+              "environmentid": "dev",
+              "environmentType": "msk-dev",
+              "costCenter": "AIS"
+            }
+        },
+        "maxSizeBytes": {
+            "value": "0"
+        },
+        "collation": {
+            "value": "SQL_Latin1_General_CP1_CI_AS"
+        },
+        "sqlServerName": {
+            "value": "msk-sqlserver-uks-dev"
+        },
+        "sqlDatabaseName": {
+            "value": "msk-sqldatabase-uks-dev"
+        },
+        "keyVaultName": {
+            "value": "msk-kv-uks-dev"
+        }
+    }
+}
