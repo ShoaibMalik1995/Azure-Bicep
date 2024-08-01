@@ -1,0 +1,2 @@
+# Bicep - Azure Storage Account
+
