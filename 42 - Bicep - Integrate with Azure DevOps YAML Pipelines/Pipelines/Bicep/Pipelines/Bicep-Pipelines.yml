@@ -1,0 +1,14 @@
+stages:
+  - template: Bicep-BuildTemplate.yml
+
+  - template: Bicep-ReleaseTemplate.yml
+    parameters:
+      environment: 'Dev'
+
+  - template: Bicep-ReleaseTemplate.yml
+    parameters:
+      environment: 'Test'
+
+  - template: Bicep-ReleaseTemplate.yml
+    parameters:
+      environment: 'Prod'

@@ -1,0 +1,38 @@
+parameters:
+- name: 'Environment'
+  type: string
+  default: 'Dev'
+
+- name: 'VariableGroup'
+  type: string
+
+stages:
+ - stage: ${{ parameters.Environment }} - Release Stage
+   variables:
+     - group: ${{ parameters.VariableGroup }}
+     dependsOn: BuildStage
+     displayName: 'Release Stage - ${{ parameters.Environment }}'
+    jobs:
+    - deployment: ReleaseJob_${{ parameters.Environment }}
+      displayName: 'Release Job ${{ parameters.Environment }}'
+      environment: ${{ parameters.Environment }}
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - task: replacetokens@6
+              displayName: 'Replace Tokens'
+              inputs:
+                    root: '$(Pipeline.Workspace)/BicepArtifacts/Infra'
+                    sourceFiles: '**/*.bicep'
+                    targetFiles: '**/*.bicep'
+
+            - task: AzureCLI@2
+              displayName: 'Deploy ARM Template'
+              inputs:
+                azureSubscription: $(AzureServiceConnection)
+                scriptType: 'bash'
+                scriptLocation: 'inlineScript'
+                inlineScript: |
+                  az deployment group create --resource-group $(ResourceGroupName) --template-file Main.bicep --parameters Main.Parameters.bicepparam 
+                workingDirectory: '$(Pipeline.Workspace)/BicepArtifacts/Infra'
