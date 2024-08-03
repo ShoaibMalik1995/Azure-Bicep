@@ -1,0 +1,7 @@
+{  
+    "projectprefix": "msk",
+    "appserviceplanprefix": "asp",
+    "appserviceprefix": "wapp",
+    "appinsightsprefix": "ai",
+    "storageaccountprefix": "stg"
+}

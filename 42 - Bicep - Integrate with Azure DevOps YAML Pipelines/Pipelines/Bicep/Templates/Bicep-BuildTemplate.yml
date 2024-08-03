@@ -1,0 +1,20 @@
+stages:
+ - stage: BuildStage
+   displayName: Build stage
+   jobs:
+   - job: Build Job
+     displayName: Build Job
+    steps:
+     - task: CopyFiles@2
+       displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+       inputs:
+         SourceFolder: '$(System.DefaultWorkingDirectory)'
+         Contents: '**/*.bicep'
+         TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+     - task: PublishBuildArtifacts@1
+       displayName: 'Publish Artifact: drop'
+       inputs:
+         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+         ArtifactName: 'BicepArtifacts'
+         publishLocation: 'Container'
